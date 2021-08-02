@@ -8,6 +8,9 @@ import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 
+import "../assets/scss/main.scss"
+import CryptosList from "./CryptosList.js"
+
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   useEffect(() => {
@@ -23,10 +26,16 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/" component={CryptosList} />
+        <Route exact path="/cryptos" component={CryptosList} />
+          <div>
           <h2>Hello from App.js</h2>
-        </Route>
+          </div>
         <Route exact path="/users/new" component={RegistrationForm} />
+        
+
+
+
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
     </Router>
