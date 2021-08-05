@@ -1,6 +1,6 @@
 const Model = require("./Model.js")
 
-class Show extends Model {
+class Crypto extends Model {
   static get tableName() {
     return "cryptos"
   }

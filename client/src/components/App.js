@@ -7,7 +7,6 @@ import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
-
 import CryptosList from "./CryptosList.js"
 
 const App = (props) => {
@@ -20,6 +19,25 @@ const App = (props) => {
       .catch(() => {
         setCurrentUser(null);
       });
+  }, []);
+
+  useEffect(() => {
+    async function fetchCrypto() {
+      try {
+        const coin = "ethereum";
+        const response = await fetch(`api/v1/cryptocurrency/listings/latest`);
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage);
+          throw(error);
+        }
+        const cryptoInfo = await response.json();
+        console.log(cryptoInfo)
+      } catch(err) {
+        console.error(`Error in fetch: ${err.message}`);
+      }
+    }
+    fetchCrypto();
   }, []);
   
   return (
