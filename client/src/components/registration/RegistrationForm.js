@@ -93,10 +93,11 @@ const RegistrationForm = () => {
     location.href = "/";
   }
 
+  <ErrorList errors={serverErrors} />
   return (
     <div className="grid-container">
       <h1>Register</h1>
-      <ErrorList errors={serverErrors} />
+   
       <form onSubmit={onSubmit}>
         <div>
           <label>

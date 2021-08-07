@@ -20,11 +20,11 @@ const App = (props) => {
         setCurrentUser(null);
       });
   }, []);
-
+  
   useEffect(() => {
     async function fetchCrypto() {
       try {
-        const coin = "ethereum";
+        const coin = "";
         const response = await fetch(`api/v1/cryptocurrency/listings/latest`);
         if (!response.ok) {
           const errorMessage = `${response.status} (${response.statusText})`
@@ -44,12 +44,11 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={CryptosList} />
-        <Route exact path="/cryptos" component={CryptosList} />
-
+        <Route exact path="/" component={CryptosList}/>
+        <Route exact path="/cryptos" component={CryptosList} /> 
         <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
-      </Switch>
+        <Route exact path="/user-sessions/new" component={SignInForm} />     
+        </Switch>
     </Router>
   );
 };

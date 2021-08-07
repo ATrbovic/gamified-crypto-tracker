@@ -5,6 +5,9 @@ class Crypto extends Model {
     return "cryptos"
   }
 
+  static get relationMappings() {
+    
+  }
 
 }
 

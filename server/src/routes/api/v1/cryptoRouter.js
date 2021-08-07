@@ -5,13 +5,12 @@ import CoinMarketClient from "../../../apiClient/CoinMarketClient.js"
 const cryptoRouter = new express.Router()
 
 cryptoRouter.get("/", async (req, res) => {
-  const  cryptoName = req.query.cryptoName 
-
-
-
+  // const  cryptoName = req.query.cryptoName 
+  console.log("at crypto router")
   try {
     const cryptoResponse = await CoinMarketClient.getCryptos()
     const cryptoData = JSON.parse(cryptoResponse)
+    console.log(cryptoResoinse)
     return res
       .set({ "Content-Type": "application/json" })
       .status(200)
