@@ -7,7 +7,6 @@ import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
-
 import CryptosList from "./CryptosList.js"
 
 const App = (props) => {
@@ -22,16 +21,34 @@ const App = (props) => {
       });
   }, []);
   
+  useEffect(() => {
+    async function fetchCrypto() {
+      try {
+        const coin = "";
+        const response = await fetch(`api/v1/cryptocurrency/listings/latest`);
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage);
+          throw(error);
+        }
+        const cryptoInfo = await response.json();
+        console.log(cryptoInfo)
+      } catch(err) {
+        console.error(`Error in fetch: ${err.message}`);
+      }
+    }
+    fetchCrypto();
+  }, []);
+  
   return (
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={CryptosList} />
-        <Route exact path="/cryptos" component={CryptosList} />
-
+        <Route exact path="/" component={CryptosList}/>
+        <Route exact path="/cryptos" component={CryptosList} /> 
         <Route exact path="/users/new" component={RegistrationForm} />
-        <Route exact path="/user-sessions/new" component={SignInForm} />
-      </Switch>
+        <Route exact path="/user-sessions/new" component={SignInForm} />     
+        </Switch>
     </Router>
   );
 };

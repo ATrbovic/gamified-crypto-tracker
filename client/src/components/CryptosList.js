@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import CryptoTile from "./CryptoTile.js"
 
-const CryptoList = (props) => {
+const CryptosList = (props) => {
   const [Cryptos, setCryptos] = useState([])
 
   const fetchCryptos = async () => {
@@ -73,3 +73,5 @@ const CryptoList = (props) => {
     </div>
   )
 }
+
+export default CryptosList

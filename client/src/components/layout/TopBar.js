@@ -37,4 +37,4 @@ const TopBar = ({ user }) => {
   );
 };
 
-export default TopBar;
+export default TopBar
